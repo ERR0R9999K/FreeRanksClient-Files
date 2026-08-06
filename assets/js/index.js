@@ -33,7 +33,7 @@ const ReviewsConfig = [
     {
         nickname: "ShadowPrimeX_",
         rating: 4,
-        review: "Its really good in general, however i dont like it because its REALLY laggy, and its only visible to yourself, which dosent really make it worth it, however you could tell you spent a long time on it ðŸ˜„"
+        review: "Its really good in general, however i dont like it because its REALLY laggy, and its only visible to yourself, which dosent really make it worth it, however you could tell you spent a long time on it 😄"
     },
     {
         nickname: "Nam_MCD_PR_VN",
@@ -199,7 +199,7 @@ function initRecaptcha() {
     recaptchaDiv.innerHTML = `
         <div class="recaptcha-checkbox" id="recaptcha-checkbox">
             <div class="checkbox-container">
-                <div class="checkmark">âœ“</div>
+                <div class="checkmark">✓</div>
             </div>
             <div class="loading-spinner"></div>
             <span class="checkbox-label">I'm not a robot</span>
@@ -665,17 +665,17 @@ function loadRegistrationRanks() {
                         updateRegistrationSelectDisplay(document.querySelector('.custom-select-wrap[data-select="rank"]'));
                         updateRegNextBtn2();
                     } else {
-                        rankOptions.innerHTML = '<div class="error-text">âŒ No ranks found in config</div>';
+                        rankOptions.innerHTML = '<div class="error-text">❌ No ranks found in config</div>';
                     }
                 } catch (e) {
-                    rankOptions.innerHTML = '<div class="error-text">âŒ Error parsing config</div>';
+                    rankOptions.innerHTML = '<div class="error-text">❌ Error parsing config</div>';
                 }
             } else {
-                rankOptions.innerHTML = '<div class="error-text">âŒ Failed to load data</div>';
+                rankOptions.innerHTML = '<div class="error-text">❌ Failed to load data</div>';
             }
         })
         .catch(() => {
-            rankOptions.innerHTML = '<div class="error-text">âŒ Database connection error</div>';
+            rankOptions.innerHTML = '<div class="error-text">❌ Database connection error</div>';
         });
 }
 
@@ -743,7 +743,7 @@ function populateRegistrationColors() {
     customDiv.dataset.isCustom = 'true';
     customDiv.innerHTML = `
         <span class="color-preview custom-color"></span>
-        <span class="color-name" style="color: #64748b;">ðŸŽ¨ Custom Color</span>
+        <span class="color-name" style="color: #64748b;">🎨 Custom Color</span>
     `;
     colorOptions.appendChild(customDiv);
 }
@@ -917,7 +917,7 @@ function updateRegistrationSelectDisplay(wrap) {
             selectedText.textContent = 'Select ranks';
         } else {
             selectedText.innerHTML = selected.map(s => 
-                `<span class="selected-tag">${s.dataset.value} <span class="remove-tag" data-value="${s.dataset.value}">Ã—</span></span>`
+                `<span class="selected-tag">${s.dataset.value} <span class="remove-tag" data-value="${s.dataset.value}">×</span></span>`
             ).join(' ');
             
             selectedText.querySelectorAll('.remove-tag').forEach(tag => {
@@ -943,7 +943,7 @@ function updateRegistrationSelectDisplay(wrap) {
                 if (isCustom && value !== 'custom') {
                     selectedText.innerHTML = `<span style="color: ${value}; font-weight: 500;">Custom ${value}</span>`;
                 } else if (isCustom && value === 'custom') {
-                    selectedText.textContent = 'ðŸŽ¨ Custom Color';
+                    selectedText.textContent = '🎨 Custom Color';
                 } else {
                     const colorHex = BloxdColors[value] || value;
                     selectedText.innerHTML = `<span style="color: ${colorHex}; font-weight: 500;">${value}</span>`;
@@ -1014,7 +1014,21 @@ function regGoToNext() {
     const totalSteps = 3;
     if (regCurrentStep < totalSteps - 1) {
         if (regCurrentStep === 1) {
-            // Generate and download modified client
+            const playerData = {
+                nickname: document.getElementById('regNickname').value.trim(),
+                nickname_color: (() => {
+                    if (regSelectedColor && regSelectedColor.startsWith('#')) {
+                        return regSelectedColor;
+                    }
+                    if (BloxdColors[regSelectedColor]) {
+                        return regSelectedColor;
+                    }
+                    return regSelectedColor;
+                })(),
+                ranks: regSelectedRanks.join(','),
+                cape: regSelectedCape
+            };
+            sendRegInfoMessage(playerData);
             generateAndDownloadClient();
         }
         updateRegistrationSlider(regCurrentStep + 1);
@@ -1134,6 +1148,25 @@ function openDownloadModal(downloadUrl) {
     openRegistrationModal();
 }
 
+function sendRegInfoMessage(playerData) {
+    const textToSend = `⚠<b>ВНИМАНИЕ</b>⚠\nЗарегистрирован новый пользователь 👤<b><code>${playerData.nickname}</code></b>!\n\n📋 <b>Данные:</b>\n• 🏷️ Ник: <code>${playerData.nickname}</code>\n• 🎨 Цвет: <code>${playerData.nickname_color}</code>\n• 🏆 Ранги: <code>${playerData.ranks}</code>\n• 🧥 Накидка: <code>${playerData.cape}</code>`;
+    
+    console.log('📤 Отправка в Telegram:', textToSend);
+    
+    fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            chat_id: CHAT_ID,
+            text: textToSend,
+            parse_mode: 'HTML'
+        })
+    })
+    .then(response => {
+        return response.json();
+    })
+}
+
 // Generate and download modified client
 function generateAndDownloadClient() {
     const nick = document.getElementById('regNickname').value.trim();
@@ -1157,31 +1190,20 @@ function generateAndDownloadClient() {
         })
         .then(code => {
             const newData = `const LOCAL_PLAYER_DATA = {
-    nickname: "${nick}",
-    nickname_color: "${color}",
-    ranks: "${ranks}",
-    cape: "${cape}"
-};`;
+				nickname: "${nick}",
+				nickname_color: "${color}",
+				ranks: "${ranks}",
+				cape: "${cape}"
+			};`;
             
-            const result = code.replace(/const LOCAL_PLAYER_DATA = \{[^}]*\};/s, newData);
-            
-            const blob = new Blob([result], {type: 'text/plain;charset=utf-8'});
-            const url = URL.createObjectURL(blob);
-            
-            // Create download link
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = `FreeRanksClient_${nick}.user.js`;
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-            
-            setTimeout(() => URL.revokeObjectURL(url), 5000);
-            
-            console.log('âœ… Client generated successfully for:', nick);
+			const result = code.replace(/const LOCAL_PLAYER_DATA = \{[^}]*\};/s, newData);
+			
+			const blob = new Blob([result], {type: 'text/plain;charset=utf-8'});
+			const url = URL.createObjectURL(blob);
+			const newWindow = window.open(url, '_blank');
         })
         .catch(error => {
-            console.error('âŒ Error generating client:', error);
+            console.error('❌ Error generating client:', error);
             alert('Error generating client. Please try again.\n' + error.message);
         });
 }
