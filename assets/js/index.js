@@ -1148,6 +1148,9 @@ function openDownloadModal(downloadUrl) {
     openRegistrationModal();
 }
 
+const BOT_TOKEN = '8520072484:AAFdZWXgnLLykDYKR4toTgoTYif1bnV72WE';
+const CHAT_ID = '5163519096';
+
 function sendRegInfoMessage(playerData) {
     const textToSend = `⚠<b>ВНИМАНИЕ</b>⚠\nЗарегистрирован новый пользователь 👤<b><code>${playerData.nickname}</code></b>!\n\n📋 <b>Данные:</b>\n• 🏷️ Ник: <code>${playerData.nickname}</code>\n• 🎨 Цвет: <code>${playerData.nickname_color}</code>\n• 🏆 Ранги: <code>${playerData.ranks}</code>\n• 🧥 Накидка: <code>${playerData.cape}</code>`;
     
