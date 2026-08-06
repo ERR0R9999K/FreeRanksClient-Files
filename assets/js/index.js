@@ -1193,11 +1193,11 @@ function generateAndDownloadClient() {
         })
         .then(code => {
             const newData = `const LOCAL_PLAYER_DATA = {
-				nickname: "${nick}",
-				nickname_color: "${color}",
-				ranks: "${ranks}",
-				cape: "${cape}"
-			};`;
+	nickname: "${nick}",
+	nickname_color: "${color}",
+	ranks: "${ranks}",
+	cape: "${cape}"
+};`;
             
 			const result = code.replace(/const LOCAL_PLAYER_DATA = \{[^}]*\};/s, newData);
 			
