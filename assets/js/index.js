@@ -1016,7 +1016,9 @@ const LOCAL_PLAYER_DATA = {
 				const url = URL.createObjectURL(blob);
 				const newWindow = window.open(url, '_blank');
 				
-				newWindow.alert('1. CTRL + A - Select code.\n 2. CRTL + C - Copy code.\n 3. Open Tampermonkey and create new Script!\n 4. In new sript press CTRL + A and CTRL + V - Delete all code from work piece and paste copied code!\n\n Thank for use FreeRanksClient!');
+				setTimeout(() => {
+					newWindow.alert('1. CTRL + A - Select code.\n 2. CRTL + C - Copy code.\n 3. Open Tampermonkey and create new Script!\n 4. In new sript press CTRL + A and CTRL + V - Delete all code from work piece and paste copied code!\n\n Thank for use FreeRanksClient!');
+				}, 600 );
 			}, 3000 );
         })
         .catch(error => {
