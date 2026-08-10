@@ -2927,3 +2927,168 @@ body {
     align-items: center !important;
     gap: 8px !important;
 }
+/* ============================================================ Super Rank Welcome ============================================================ */
+.svg-inline--fa {
+    display: inline-block;
+    height: 1em;
+    overflow: visible;
+    vertical-align: -0.125em;
+    width: 1.25em;
+}
+
+@keyframes fadeInScaleUp {
+    0% { opacity: 0; transform: scale(0.6); }
+    50% { opacity: 1; transform: scale(1.1); }
+    100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes SnowflakeFall {
+    0% { top: -10rem; }
+    100% { top: calc(100% + 10rem); }
+}
+
+@keyframes SnowflakeSway {
+    0% { transform: translateX(-2em) translateY(0px); }
+    50% { transform: translateX(2em) translateY(-0.5em); }
+    100% { transform: translateX(-2em) translateY(0px); }
+}
+
+.PurchaseWelcome {
+    background-color: #22283b;
+    color: #ffffff;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Helvetica Neue", sans-serif;
+    font-weight: 600;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow: hidden;
+    user-select: none;
+}
+
+.PurchaseWelcome {
+    align-items: center;
+    animation-duration: 0.2s;
+    animation-fill-mode: backwards;
+    animation-iteration-count: 1;
+    animation-name: fadeInScaleUp;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    justify-content: center;
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    z-index: 1;
+}
+		
+.PurchaseWelcome a {
+	text-decoration: none;
+	outline: none;
+}
+
+.PurchaseWelcome .PurchaseWelcomeTitle {
+    font-size: 5rem;
+    font-weight: 900;
+    -webkit-text-stroke: 1px #303a59;
+    text-shadow: rgb(48, 58, 89) -1px -1px 0px, rgb(48, 58, 89) 1px -1px 0px, rgb(48, 58, 89) -1px 1px 0px, rgb(48, 58, 89) 1px 1px 0px, rgb(48, 58, 89) 0px 3px 2px;
+    z-index: 2;
+}
+
+.PurchaseWelcome .PurchaseWelcomeText {
+    background-color: rgba(57, 73, 128, 0.5);
+    border-radius: 0px;
+    font-size: 2rem;
+    max-width: 50rem;
+    padding: 0.5rem 1rem;
+    text-align: center;
+    z-index: 2;
+}
+
+.PurchaseWelcome .PurchaseWelcomeWarning {
+    align-items: center;
+    background-color: rgba(252, 211, 115, 0.5);
+    border-radius: 0px;
+    display: flex;
+    gap: 1rem;
+    max-width: 50rem;
+    padding: 0.5rem 1rem;
+    z-index: 2;
+}
+
+.PurchaseWelcome .PurchaseWelcomeWarning .svg-inline--fa {
+    color: #ffb914;
+    font-size: 2rem;
+    flex-shrink: 0;
+}
+
+.PurchaseWelcome .PurchaseWelcomeContinue {
+    background-color: #ffb914;
+    border: 1px solid #0f0f0f;
+    box-shadow: rgba(0, 0, 0, 0.32) 0.2rem 0.25rem 0px;
+    color: #ffffff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    margin-top: 1rem;
+    padding: 0.7rem 1rem;
+    text-shadow: rgb(48, 58, 89) -1px -1px 0px, rgb(48, 58, 89) -1px 0px 0px, rgb(48, 58, 89) -1px 1px 0px, rgb(48, 58, 89) 0px -1px 0px, rgb(48, 58, 89) 0px 0px 0px, rgb(48, 58, 89) 0px 1px 0px, rgb(48, 58, 89) 1px -1px 0px, rgb(48, 58, 89) 1px 0px 0px, rgb(48, 58, 89) 1px 1px 0px;
+    transition: transform 0.2s;
+    z-index: 2;
+    text-decoration: none;
+    font-weight: 600;
+    min-width: 200px;
+}
+
+.PurchaseWelcome .PurchaseWelcomeContinue:hover {
+    transform: scale(1.05);
+}
+
+.PurchaseWelcome .PurchaseWelcomeContinue .ButtonBody {
+    padding: 0.2rem 1rem;
+}
+
+.IconShower {
+    height: 100%;
+    left: 0px;
+    position: absolute;
+    top: 0px;
+    width: 100%;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.IconShower .Icon {
+    position: absolute;
+    top: -10rem;
+    color: #ffb914;
+}
+
+.IconShower .Icon.IconGroup0 {
+    font-size: 1rem;
+    opacity: 0.7;
+}
+.IconShower .Icon.IconGroup1 {
+    font-size: 0.7rem;
+    opacity: 0.5;
+}
+.IconShower .Icon.IconGroup2 {
+    font-size: 0.5rem;
+    opacity: 0.3;
+}
+
+.IconShowerAnimationFall .Icon {
+    animation: 5s linear 0s infinite normal none running SnowflakeFall;
+}
+
+.IconShowerAnimationFall .Icon {
+    animation-duration: 5s, 3s;
+    animation-name: SnowflakeFall, SnowflakeSway;
+    animation-timing-function: linear, ease-in-out;
+    animation-iteration-count: infinite, infinite;
+}
