@@ -1,0 +1,236 @@
+<style>
+@keyframes fadeInScaleUp {
+    0% { opacity: 0; transform: scale(0.6); }
+    50% { opacity: 1; transform: scale(1.1); }
+    100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes SnowflakeFall {
+    0% { top: -10rem; }
+    100% { top: calc(100% + 10rem); }
+}
+
+@keyframes SnowflakeSway {
+    0% { transform: translateX(-2em) translateY(0px); }
+    50% { transform: translateX(2em) translateY(-0.5em); }
+    100% { transform: translateX(-2em) translateY(0px); }
+}
+
+.PurchaseWelcome {
+    background-color: #22283b;
+    color: #ffffff;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Helvetica Neue", sans-serif;
+    font-weight: 600;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow: hidden;
+    user-select: none;
+}
+
+.PurchaseWelcome {
+    align-items: center;
+    animation-duration: 0.2s;
+    animation-fill-mode: backwards;
+    animation-iteration-count: 1;
+    animation-name: fadeInScaleUp;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    justify-content: center;
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.PurchaseWelcome a {
+    text-decoration: none;
+    outline: none;
+}
+
+.PurchaseWelcome .PurchaseWelcomeTitle {
+    font-size: 5rem;
+    font-weight: 900;
+    -webkit-text-stroke: 1px #303a59;
+    text-shadow: rgb(48, 58, 89) -1px -1px 0px, rgb(48, 58, 89) 1px -1px 0px, rgb(48, 58, 89) -1px 1px 0px, rgb(48, 58, 89) 1px 1px 0px, rgb(48, 58, 89) 0px 3px 2px;
+    z-index: 2;
+}
+
+.PurchaseWelcome .PurchaseWelcomeText {
+    background-color: rgba(57, 73, 128, 0.5);
+    border-radius: 0px;
+    font-size: 2rem;
+    max-width: 50rem;
+    padding: 0.5rem 1rem;
+    text-align: center;
+    z-index: 2;
+}
+
+.PurchaseWelcome .PurchaseWelcomeWarning {
+    align-items: center;
+    background-color: rgba(252, 211, 115, 0.5);
+    border-radius: 0px;
+    display: flex;
+    gap: 1rem;
+    max-width: 50rem;
+    padding: 0.5rem 1rem;
+    z-index: 2;
+}
+
+.PurchaseWelcome .PurchaseWelcomeWarning .fa-circle-info {
+    color: #ffb914;
+    font-size: 2rem;
+    flex-shrink: 0;
+}
+
+.PurchaseWelcome .PurchaseWelcomeContinue {
+    background-color: #ffb914;
+    border: 1px solid #0f0f0f;
+    box-shadow: rgba(0, 0, 0, 0.32) 0.2rem 0.25rem 0px;
+    color: #ffffff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    margin-top: 1rem;
+    padding: 0.7rem 1rem;
+    text-shadow: rgb(48, 58, 89) -1px -1px 0px, rgb(48, 58, 89) -1px 0px 0px, rgb(48, 58, 89) -1px 1px 0px, rgb(48, 58, 89) 0px -1px 0px, rgb(48, 58, 89) 0px 0px 0px, rgb(48, 58, 89) 0px 1px 0px, rgb(48, 58, 89) 1px -1px 0px, rgb(48, 58, 89) 1px 0px 0px, rgb(48, 58, 89) 1px 1px 0px;
+    transition: transform 0.2s;
+    z-index: 2;
+    text-decoration: none;
+    font-weight: 600;
+    min-width: 200px;
+}
+
+.PurchaseWelcome .PurchaseWelcomeContinue:hover {
+    transform: scale(1.05);
+}
+
+.PurchaseWelcome .PurchaseWelcomeContinue .ButtonBody {
+    padding: 0.2rem 1rem;
+}
+
+.IconShower {
+    height: 100%;
+    left: 0px;
+    position: absolute;
+    top: 0px;
+    width: 100%;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.IconShower .Icon {
+    position: absolute;
+    top: -10rem;
+    color: #ffb914;
+}
+
+.IconShower .Icon.IconGroup0 {
+    font-size: 1rem;
+    opacity: 0.7;
+}
+.IconShower .Icon.IconGroup1 {
+    font-size: 0.7rem;
+    opacity: 0.5;
+}
+.IconShower .Icon.IconGroup2 {
+    font-size: 0.5rem;
+    opacity: 0.3;
+}
+
+.IconShowerAnimationFall .Icon {
+    animation-duration: 5s, 3s;
+    animation-name: SnowflakeFall, SnowflakeSway;
+    animation-timing-function: linear, ease-in-out;
+    animation-iteration-count: infinite, infinite;
+}
+</style>
+
+<div class="PurchaseWelcome AnimFadeInScaleUp">
+    <div class="IconShower IconShowerAnimationFall SuperRankWelcomeIconShower">
+        <div class="Icon IconGroup0" style="left: 26.6506%; animation-delay: -15.3531s;">
+            <i class="fas fa-bolt"></i>
+        </div>
+        <div class="Icon IconGroup0" style="left: 39.7245%; animation-delay: -9.5564s;">
+            <i class="fas fa-bolt"></i>
+        </div>
+        <div class="Icon IconGroup0" style="left: 66.5466%; animation-delay: -15.9836s;">
+            <i class="fas fa-bolt"></i>
+        </div>
+        <div class="Icon IconGroup0" style="left: 54.5869%; animation-delay: -6.37543s;">
+            <i class="fas fa-bolt"></i>
+        </div>
+        <div class="Icon IconGroup0" style="left: 17.4444%; animation-delay: -8.62103s;">
+            <i class="fas fa-bolt"></i>
+        </div>
+        <div class="Icon IconGroup0" style="left: 81.0774%; animation-delay: -4.32576s;">
+            <i class="fas fa-bolt"></i>
+        </div>
+
+        <div class="Icon IconGroup1" style="left: 89.6189%; animation-delay: -11.8014s;">
+            <i class="fas fa-bolt"></i>
+        </div>
+        <div class="Icon IconGroup1" style="left: 75.8629%; animation-delay: -15.9735s;">
+            <i class="fas fa-bolt"></i>
+        </div>
+        <div class="Icon IconGroup1" style="left: 99.4097%; animation-delay: -9.5087s;">
+            <i class="fas fa-bolt"></i>
+        </div>
+        <div class="Icon IconGroup1" style="left: 78.9131%; animation-delay: -19.953s;">
+            <i class="fas fa-bolt"></i>
+        </div>
+        <div class="Icon IconGroup1" style="left: 66.4809%; animation-delay: -16.57s;">
+            <i class="fas fa-bolt"></i>
+        </div>
+
+        <div class="Icon IconGroup2" style="left: 39.5988%; animation-delay: -1.81153s;">
+            <i class="fas fa-bolt"></i>
+        </div>
+        <div class="Icon IconGroup2" style="left: 64.6272%; animation-delay: -15.0387s;">
+            <i class="fas fa-bolt"></i>
+        </div>
+        <div class="Icon IconGroup2" style="left: 89.6928%; animation-delay: -17.1031s;">
+            <i class="fas fa-bolt"></i>
+        </div>
+        <div class="Icon IconGroup2" style="left: 73.6072%; animation-delay: -14.1165s;">
+            <i class="fas fa-bolt"></i>
+        </div>
+        <div class="Icon IconGroup2" style="left: 82.8318%; animation-delay: -1.93817s;">
+            <i class="fas fa-bolt"></i>
+        </div>
+        <div class="Icon IconGroup2" style="left: 62.734%; animation-delay: -9.07478s;">
+            <i class="fas fa-bolt"></i>
+        </div>
+        <div class="Icon IconGroup2" style="left: 33.2579%; animation-delay: -4.16121s;">
+            <i class="fas fa-bolt"></i>
+        </div>
+        <div class="Icon IconGroup2" style="left: 1.53472%; animation-delay: -13.0814s;">
+            <i class="fas fa-bolt"></i>
+        </div>
+        <div class="Icon IconGroup2" style="left: 5.65972%; animation-delay: -6.58245s;">
+            <i class="fas fa-bolt"></i>
+        </div>
+        <div class="Icon IconGroup2" style="left: 39.8058%; animation-delay: -19.8215s;">
+            <i class="fas fa-bolt"></i>
+        </div>
+    </div>
+
+    <div class="PurchaseWelcomeTitle FullyFancyText">Welcome To Super Rank!</div>
+    <div class="PurchaseWelcomeText">You can change your name color and cape in the customization menu in game!</div>
+    <div class="PurchaseWelcomeWarning">
+        <i class="fas fa-circle-info"></i>
+        <div>You should get Super Rank instantly, but it could take up to an hour to apply. If you don't have Super Rank after an hour, contact help@bloxd.io / @ERR0R9999K in discord!</div>
+    </div>
+    <div role="button" tabindex="0" class="NewButton GoldButton PurchaseWelcomeContinue">
+        <div class="ButtonTopBorder"></div>
+        <div class="ButtonBottomBorder"></div>
+        <div class="ButtonBody">Continue</div>
+    </div>
+</div>
