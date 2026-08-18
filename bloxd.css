@@ -131,11 +131,15 @@ body {
 .WhiteButton {
     background: rgba(255, 255, 255, 0.2) !important;
     border: 2px solid rgba(255, 255, 255, 0.4) !important;
+	color: rgba(255, 255, 255, 0.4) !important;
+	text-shadow: none !important;
 }
 
 .BlackButton {
     background: rgba(0, 0, 0, 0.2) !important;
     border: 2px solid rgba(0, 0, 0, 0.4) !important;
+	color: rgba(0, 0, 0, 0.4) !important;
+	text-shadow: none !important;
 }
 
 .FRC.CreditsMain {
