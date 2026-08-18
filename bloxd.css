@@ -123,6 +123,11 @@ body {
     text-shadow: -2px -2px 0 #000, -2px 0 0 #000, -2px 2px 0 #000, 0 -2px 0 #000, 0 0 0 #000, 0 2px 0 #000, 2px -2px 0 #000, 2px 0 0 #000, 2px 2px 0 #000 !important;
 }
 
+.FRC-text {
+    font-family: 'Orbitron', sans-serif !important;
+    text-shadow: -2px -2px 0 #000, -2px 0 0 #000, -2px 2px 0 #000, 0 -2px 0 #000, 0 0 0 #000, 0 2px 0 #000, 2px -2px 0 #000, 2px 0 0 #000, 2px 2px 0 #000 !important;
+}
+
 .FRC.CreditsMain {
     background: rgba(0, 0, 0, 0.2) !important;
     border: 2px solid rgba(0, 0, 0, 0.4) !important;
