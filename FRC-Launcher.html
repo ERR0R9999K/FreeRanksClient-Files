@@ -465,6 +465,9 @@
   <script>
     (function () {
       "use strict";
+	  
+	  const urlParams = new URLSearchParams(window.location.search);
+	  const clientURL = urlParams.get('client');
 
       var bar     = document.getElementById("bar");
       var percent = document.getElementById("pc");
@@ -532,23 +535,28 @@
         }, 60);
       }
 
-      function finish() {
-        if (finished) return;
-        finished = true;
+	function finish() {
+		if (finished) return;
+		finished = true;
 
-        setProgress(100);
-        setStatus("Ready");
-        title.textContent   = "FreeRanksClient · Ready";
-        heading.textContent = "Ready";
-        sub.textContent     = "FreeRanksClient has loaded successfully.";
+		setProgress(100);
+		setStatus("Ready");
+		title.textContent   = "FreeRanksClient · Ready";
+		heading.textContent = "Ready";
+		sub.textContent     = "FreeRanksClient has loaded successfully.";
 
-        icon.className = "fa-solid fa-circle-check";
-        icon.style.animation = "none";
-        ring.classList.add("is-ready");
+		icon.className = "fa-solid fa-circle-check";
+		icon.style.animation = "none";
+		ring.classList.add("is-ready");
 
-        for (var i = 0; i < steps.length; i++) markStep(i, "done");
-      }
+		for (var i = 0; i < steps.length; i++) markStep(i, "done");
 
+		if (clientURL) {
+			setTimeout(() => {
+				window.location.href = clientURL;
+			}, 500);
+		}
+	}
       function fail(message) {
         if (finished) return;
         finished = true;
